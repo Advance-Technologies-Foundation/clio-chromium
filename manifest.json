@@ -1,0 +1,37 @@
+{
+  "name": "Clio helper",
+  "version": "0.0.0.1",
+  "manifest_version": 3,
+  "description": "Clio OAuth helper",
+  
+  "action": {
+	"default_title": "Send to Clio",
+	"default_icon": {
+		"16": "icons/nasapod16x16.png",
+		"32": "icons/nasapod32x32.png",
+		"48": "icons/nasapod48x48.png",
+		"128": "icons/nasapod128x128.png"
+	}
+  },
+  "content_scripts": [
+      {
+          "matches": [
+			"<all_urls>",
+			"*://*.creatio.com/0/Shell/*"
+          ],
+          "js": ["lib/jquery.min.js","content-scripts/content.js"]
+      }
+  ],
+  "web_accessible_resources": [
+      {
+          "resources": ["images/*.jpeg"],
+          "matches": ["<all_urls>"]
+      }
+  ],
+  "background": {
+    "service_worker": "backgroud-scripts/background.js"
+  },
+  "permissions": [
+    "tabs"
+  ]
+}
